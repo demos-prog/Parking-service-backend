@@ -129,6 +129,7 @@ exports.Prisma.UserScalarFieldEnum = {
 
 exports.Prisma.Parking_spotScalarFieldEnum = {
   id: 'id',
+  name: 'name',
   location: 'location'
 };
 

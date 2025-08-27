@@ -2229,16 +2229,19 @@ export namespace Prisma {
 
   export type Parking_spotMinAggregateOutputType = {
     id: number | null
+    name: string | null
     location: string | null
   }
 
   export type Parking_spotMaxAggregateOutputType = {
     id: number | null
+    name: string | null
     location: string | null
   }
 
   export type Parking_spotCountAggregateOutputType = {
     id: number
+    name: number
     location: number
     _all: number
   }
@@ -2254,16 +2257,19 @@ export namespace Prisma {
 
   export type Parking_spotMinAggregateInputType = {
     id?: true
+    name?: true
     location?: true
   }
 
   export type Parking_spotMaxAggregateInputType = {
     id?: true
+    name?: true
     location?: true
   }
 
   export type Parking_spotCountAggregateInputType = {
     id?: true
+    name?: true
     location?: true
     _all?: true
   }
@@ -2356,6 +2362,7 @@ export namespace Prisma {
 
   export type Parking_spotGroupByOutputType = {
     id: number
+    name: string
     location: string
     _count: Parking_spotCountAggregateOutputType | null
     _avg: Parking_spotAvgAggregateOutputType | null
@@ -2380,6 +2387,7 @@ export namespace Prisma {
 
   export type Parking_spotSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     location?: boolean
     reservations?: boolean | Parking_spot$reservationsArgs<ExtArgs>
     _count?: boolean | Parking_spotCountOutputTypeDefaultArgs<ExtArgs>
@@ -2387,20 +2395,23 @@ export namespace Prisma {
 
   export type Parking_spotSelectCreateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     location?: boolean
   }, ExtArgs["result"]["parking_spot"]>
 
   export type Parking_spotSelectUpdateManyAndReturn<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
+    name?: boolean
     location?: boolean
   }, ExtArgs["result"]["parking_spot"]>
 
   export type Parking_spotSelectScalar = {
     id?: boolean
+    name?: boolean
     location?: boolean
   }
 
-  export type Parking_spotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "location", ExtArgs["result"]["parking_spot"]>
+  export type Parking_spotOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "location", ExtArgs["result"]["parking_spot"]>
   export type Parking_spotInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     reservations?: boolean | Parking_spot$reservationsArgs<ExtArgs>
     _count?: boolean | Parking_spotCountOutputTypeDefaultArgs<ExtArgs>
@@ -2415,6 +2426,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
+      name: string
       location: string
     }, ExtArgs["result"]["parking_spot"]>
     composites: {}
@@ -2841,6 +2853,7 @@ export namespace Prisma {
    */
   interface Parking_spotFieldRefs {
     readonly id: FieldRef<"Parking_spot", 'Int'>
+    readonly name: FieldRef<"Parking_spot", 'String'>
     readonly location: FieldRef<"Parking_spot", 'String'>
   }
     
@@ -4419,6 +4432,7 @@ export namespace Prisma {
 
   export const Parking_spotScalarFieldEnum: {
     id: 'id',
+    name: 'name',
     location: 'location'
   };
 
@@ -4588,12 +4602,14 @@ export namespace Prisma {
     OR?: Parking_spotWhereInput[]
     NOT?: Parking_spotWhereInput | Parking_spotWhereInput[]
     id?: IntFilter<"Parking_spot"> | number
+    name?: StringFilter<"Parking_spot"> | string
     location?: StringFilter<"Parking_spot"> | string
     reservations?: ReservationListRelationFilter
   }
 
   export type Parking_spotOrderByWithRelationInput = {
     id?: SortOrder
+    name?: SortOrder
     location?: SortOrder
     reservations?: ReservationOrderByRelationAggregateInput
   }
@@ -4603,12 +4619,14 @@ export namespace Prisma {
     AND?: Parking_spotWhereInput | Parking_spotWhereInput[]
     OR?: Parking_spotWhereInput[]
     NOT?: Parking_spotWhereInput | Parking_spotWhereInput[]
+    name?: StringFilter<"Parking_spot"> | string
     location?: StringFilter<"Parking_spot"> | string
     reservations?: ReservationListRelationFilter
   }, "id">
 
   export type Parking_spotOrderByWithAggregationInput = {
     id?: SortOrder
+    name?: SortOrder
     location?: SortOrder
     _count?: Parking_spotCountOrderByAggregateInput
     _avg?: Parking_spotAvgOrderByAggregateInput
@@ -4622,6 +4640,7 @@ export namespace Prisma {
     OR?: Parking_spotScalarWhereWithAggregatesInput[]
     NOT?: Parking_spotScalarWhereWithAggregatesInput | Parking_spotScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Parking_spot"> | number
+    name?: StringWithAggregatesFilter<"Parking_spot"> | string
     location?: StringWithAggregatesFilter<"Parking_spot"> | string
   }
 
@@ -4741,38 +4760,45 @@ export namespace Prisma {
   }
 
   export type Parking_spotCreateInput = {
+    name: string
     location: string
     reservations?: ReservationCreateNestedManyWithoutParking_spot_numberInput
   }
 
   export type Parking_spotUncheckedCreateInput = {
     id?: number
+    name: string
     location: string
     reservations?: ReservationUncheckedCreateNestedManyWithoutParking_spot_numberInput
   }
 
   export type Parking_spotUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     reservations?: ReservationUpdateManyWithoutParking_spot_numberNestedInput
   }
 
   export type Parking_spotUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
     reservations?: ReservationUncheckedUpdateManyWithoutParking_spot_numberNestedInput
   }
 
   export type Parking_spotCreateManyInput = {
     id?: number
+    name: string
     location: string
   }
 
   export type Parking_spotUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
   }
 
   export type Parking_spotUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
   }
 
@@ -4960,6 +4986,7 @@ export namespace Prisma {
 
   export type Parking_spotCountOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     location?: SortOrder
   }
 
@@ -4969,11 +4996,13 @@ export namespace Prisma {
 
   export type Parking_spotMaxOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     location?: SortOrder
   }
 
   export type Parking_spotMinOrderByAggregateInput = {
     id?: SortOrder
+    name?: SortOrder
     location?: SortOrder
   }
 
@@ -5403,11 +5432,13 @@ export namespace Prisma {
   }
 
   export type Parking_spotCreateWithoutReservationsInput = {
+    name: string
     location: string
   }
 
   export type Parking_spotUncheckedCreateWithoutReservationsInput = {
     id?: number
+    name: string
     location: string
   }
 
@@ -5452,11 +5483,13 @@ export namespace Prisma {
   }
 
   export type Parking_spotUpdateWithoutReservationsInput = {
+    name?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
   }
 
   export type Parking_spotUncheckedUpdateWithoutReservationsInput = {
     id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
     location?: StringFieldUpdateOperationsInput | string
   }
 

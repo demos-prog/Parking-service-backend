@@ -1,4 +1,3 @@
-// dto/verify-user.dto.ts
 import { IsString, MinLength } from 'class-validator';
 
 export class VerifyUserDto {
