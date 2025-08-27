@@ -1,0 +1,39 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../generated/prisma_client"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+  id           Int           @id @default(autoincrement())
+  createdAt    DateTime      @default(now())
+  email        String        @unique
+  password     String
+  reservations Reservation[]
+}
+
+model Parking_spot {
+  id           Int           @id @default(autoincrement())
+  location     String
+  reservations Reservation[]
+}
+
+model Reservation {
+  id                  Int               @id @default(autoincrement())
+  authorId            Int
+  parkingSpotId       Int
+  reserved_date       DateTime
+  reserved_time       DateTime
+  status              ReservationStatus @default(BOOKED)
+  user_id             User              @relation(fields: [authorId], references: [id])
+  parking_spot_number Parking_spot      @relation(fields: [parkingSpotId], references: [id])
+}
+
+enum ReservationStatus {
+  BOOKED
+  CANCELLED
+}

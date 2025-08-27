@@ -1,0 +1,40 @@
+services:
+  postgress:
+    container_name: postgress
+    # build: ./prisma
+    image: postgres:15
+    env_file: .env
+    environment:
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+      - POSTGRES_DB=${POSTGRES_DB}
+    ports:
+      - ${POSTGRES_PORT}:5432
+    volumes:
+      - db:/var/lib/postgresql/data
+    restart: always
+    networks:
+      - user-defined
+
+  # nest-app:
+  #   container_name: nest_app
+  #   build: ./
+  #   env_file: .env
+  #   ports:
+  #     - '${PORT}:${PORT}'
+  #   depends_on:
+  #     - postgress
+  #   volumes:
+  #     - app:/home/node/app
+  #   command: sh -c "npx prisma migrate deploy && npm run start:prod"
+  #   restart: always
+  #   networks:
+  #     - user-defined
+
+volumes:
+  app:
+  db:
+
+networks:
+  user-defined:
+    driver: bridge
