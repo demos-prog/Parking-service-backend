@@ -44,10 +44,14 @@ export class ParkingSpotService {
       throw new BadRequestException('ID is required');
     }
 
+    const targetParkingSpot = await this.findOne(id);
+    if (!targetParkingSpot) {
+      throw new BadRequestException(`Parkingspot with id: ${id} doesn't exist`);
+    }
+
     const data: any = {};
     if (updateParkingSpotDto.name) {
-      const existingSpot = await this.findByName(updateParkingSpotDto.name);
-      if (existingSpot) {
+      if (targetParkingSpot.name === updateParkingSpotDto.name) {
         throw new BadRequestException(
           'Parkingspot with this name already exists',
         );
