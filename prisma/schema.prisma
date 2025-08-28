@@ -11,6 +11,7 @@ datasource db {
 model User {
   id           Int           @id @default(autoincrement())
   createdAt    DateTime      @default(now())
+  updatedAt    DateTime      @updatedAt
   email        String        @unique
   password     String
   reservations Reservation[]
@@ -24,14 +25,14 @@ model Parking_spot {
 }
 
 model Reservation {
-  id                  Int               @id @default(autoincrement())
-  authorId            Int
-  parkingSpotId       Int
+  id                Int               @id @default(autoincrement())
+  user_id           Int               @unique
+  parking_spot_number       Int       @unique
   reserved_date       DateTime
   reserved_time       DateTime
   status              ReservationStatus @default(BOOKED)
-  user_id             User              @relation(fields: [authorId], references: [id])
-  parking_spot_number Parking_spot      @relation(fields: [parkingSpotId], references: [id])
+  authorId            User        @relation(fields: [user_id], references: [id])
+  parkingSpotId       Parking_spot   @relation(fields: [parking_spot_number], references: [id])
 }
 
 enum ReservationStatus {
